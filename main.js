@@ -2,18 +2,28 @@
 
 // Variables for HTML elements
 let containerEl = document.getElementById("container");
+let inputEl = document.getElementById("color-in");
 
-// Array
-let colors = ["red", "green", "blue", "orange", "cyan", "purple", "maroon"];
-// Index ->     0        1       2        3        4       5
+// Event Listener
+inputEl.addEventListener("keydown", submitHandler);
 
-
-// Display all colors on the page
-let divStr = "";
-for (let i = 0; i < colors.length; i++) {
-    divStr += `<div style="background: ${colors[i]}"></div>`;
+function submitHandler(event) {
+    if (event.keyCode === 13) {
+        // Create color array based on user input
+        let inputStr = inputEl.value;
+        let colorsArray = inputStr.split(",");
+        displayColors(colorsArray);
+    }
 }
-containerEl.innerHTML = divStr;
+
+function displayColors(colors) {
+    // Display all colors on the page
+    let divStr = "";
+    for (let i = 0; i < colors.length; i++) {
+        divStr += `<div style="background: ${colors[i]}"></div>`;
+    }
+    containerEl.innerHTML = divStr;
+}
 
 
 
