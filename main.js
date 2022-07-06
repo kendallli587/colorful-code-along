@@ -4,15 +4,18 @@
 let containerEl = document.getElementById("container");
 let inputEl = document.getElementById("color-in");
 
+// Global Variable
+let colors = [];
+
 // Event Listener
 inputEl.addEventListener("keydown", submitHandler);
 
 function submitHandler(event) {
     if (event.keyCode === 13) {
-        // Create color array based on user input
-        let inputStr = inputEl.value;
-        let colorsArray = inputStr.split(",");
-        displayColors(colorsArray);
+        // Add user's input to colors array and display
+        colors.push(inputEl.value);
+        inputEl.value = "";
+        displayColors(colors);
     }
 }
 
